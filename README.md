@@ -8,7 +8,7 @@ Welcome to my personal mobile development portfolio — built entirely with Flut
 - **MVVM**, **BLoC**, **GoRouter**, **GetIt**, and more
 - Backend integrations using **Spring Boot** and **Go (Golang)** for performance-critical services
 
-👉 **Live Portfolio:** [your-username.github.io/your-repo-name](https://your-username.github.io/your-repo-name)
+👉 **Live Portfolio:** [https://github.com/GoradiaNishant/materialPortfolio](https://github.com/GoradiaNishant/materialPortfolio)
 
 ---
 
