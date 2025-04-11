@@ -1,16 +1,24 @@
-# material_portfolio
+# 🚀 My Flutter Portfolio
 
-Material 3 Portfolio
+Welcome to my personal mobile development portfolio — built entirely with Flutter and hosted on GitHub Pages. This site showcases selected apps, features, and projects I've developed using:
 
-## Getting Started
+- **Flutter** (Dart)
+- **Kotlin** (Android)
+- **Swift** (iOS)
+- **MVVM**, **BLoC**, **GoRouter**, **GetIt**, and more
+- Backend integrations using **Spring Boot** and **Go (Golang)** for performance-critical services
 
-This project is a starting point for a Flutter application.
+👉 **Live Portfolio:** [your-username.github.io/your-repo-name](https://your-username.github.io/your-repo-name)
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Technologies Used
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Flutter Web** (stable channel)
+- **Dart**
+- **GitHub Pages** for hosting
+- **Responsive design** for desktop, tablet, and mobile
+- **Custom animations**, **dark/light themes**, and **clean UI**
+
+---
+
