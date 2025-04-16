@@ -25,12 +25,12 @@ class ShowCaseWidget extends StatelessWidget {
           elevation: 3,
           margin: const EdgeInsets.symmetric(vertical: 16),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(10),
           ),
           child: Container(
             decoration: BoxDecoration(
               color: colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
             ),
             padding: const EdgeInsets.all(16),
             child: isMobile ? _buildMobileLayout() : _buildDesktopLayout(),

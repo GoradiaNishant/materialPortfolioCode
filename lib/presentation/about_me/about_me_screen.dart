@@ -65,7 +65,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
   Widget mainContent(bool isWide,bool isExtraWide) {
     return Padding(
       padding: EdgeInsets.only(
-        top: isWide ? 100.h : 34.w,
+        top: 34.w,
         right: 32,
         left: 32,
       ),
@@ -79,7 +79,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
             padding: EdgeInsets.all(24),
             decoration: BoxDecoration(
               color: colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               boxShadow: const [
                 BoxShadow(color: Colors.black26, blurRadius: 10),
               ],
@@ -120,7 +120,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 10)],
       ),
       child: Column(
@@ -260,7 +260,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
         padding: EdgeInsets.all(24),
         decoration: BoxDecoration(
           color: colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
           boxShadow: const [
             BoxShadow(color: Colors.black26, blurRadius: 10),
           ],

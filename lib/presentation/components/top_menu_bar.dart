@@ -7,7 +7,8 @@ import '../../utils/custom_segment_tab/widget.dart';
 
 class TopMenuBar extends StatefulWidget {
   final CoreStore coreStore;
-  const TopMenuBar({super.key, required this.coreStore});
+  final bool isWide;
+  const TopMenuBar({super.key, required this.coreStore, required this.isWide});
 
   @override
   State<TopMenuBar> createState() => _TopMenuBarState();
@@ -18,35 +19,29 @@ class _TopMenuBarState extends State<TopMenuBar> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final isWide = constraints.maxWidth > 750;
-
-        return Align(
-          alignment: isWide ? Alignment.topCenter : Alignment.topLeft,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 400),
-              transitionBuilder: (child, animation) {
-                return SlideTransition(
-                  position: Tween<Offset>(
-                    begin: const Offset(0.0, -0.3),
-                    end: Offset.zero,
-                  ).animate(animation),
-                  child: FadeTransition(
-                    opacity: animation,
-                    child: child,
-                  ),
-                );
-              },
-              child: isWide
-                  ? _buildWideMenu(colorScheme)
-                  : _buildPopupMenu(colorScheme),
-            ),
-          ),
-        );
-      },
+    return Align(
+      alignment: widget.isWide ? Alignment.topCenter : Alignment.topLeft,
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 400),
+          transitionBuilder: (child, animation) {
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0.0, -0.3),
+                end: Offset.zero,
+              ).animate(animation),
+              child: FadeTransition(
+                opacity: animation,
+                child: child,
+              ),
+            );
+          },
+          child: widget.isWide
+              ? _buildWideMenu(colorScheme)
+              : _buildPopupMenu(colorScheme),
+        ),
+      ),
     );
   }
 
@@ -68,11 +63,11 @@ class _TopMenuBarState extends State<TopMenuBar> with TickerProviderStateMixin {
               1: bodyTextRegular('Projects',fontSize:24,color: (value == 1) ? colorScheme.onInverseSurface: colorScheme.onPrimaryContainer,),
             },
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(40),
             ),
             thumbDecoration: BoxDecoration(
               color: colorScheme.onPrimaryContainer,
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(40),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(.3),

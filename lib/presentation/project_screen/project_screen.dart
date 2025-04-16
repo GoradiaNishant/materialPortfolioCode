@@ -54,7 +54,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
   Widget mainContent(bool isWide) {
     return Padding(
       padding: EdgeInsets.only(
-        top: isWide ? 100.h : 34.w,
+        top: 34.w,
         right: 32.w,
         left: 32.w,
       ),

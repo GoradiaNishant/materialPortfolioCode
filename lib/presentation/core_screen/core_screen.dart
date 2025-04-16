@@ -72,12 +72,22 @@ class _CoreScreenState extends State<CoreScreen> {
                           ? Row(
                             children: [
                               sideBar(isWide),
-                              Expanded(child: getPageView()),
+                              Expanded(child: Column(
+                                children: [
+                                  // Padding for the top menu bar
+                                  getTopAppBar(isWide),
+
+                                  Expanded(child: getPageView()),
+                                ],
+                              )),
                             ],
                           )
                           : SingleChildScrollView(
                             child: Column(
                               children: [
+                                // Padding for the top menu bar
+                                getTopAppBar(isWide),
+
                                 sideBar(isWide),
                                 // Adjust height proportionally based on screen width
                                 getPageView(),
@@ -89,12 +99,6 @@ class _CoreScreenState extends State<CoreScreen> {
 
                   // Theme switch button
                   _themeSwitch(),
-
-                  // Padding for the top menu bar
-                  Padding(
-                    padding: EdgeInsets.all(12),
-                    child: TopMenuBar(coreStore: store),
-                  ),
                 ],
               ),
             ),
@@ -449,6 +453,7 @@ class _CoreScreenState extends State<CoreScreen> {
     return SingleChildScrollView(
       child: ExpandablePageView(
         controller: pageController,
+        physics: NeverScrollableScrollPhysics(),
         children: [
           AboutMeScreen(),
           ProjectScreen()
@@ -456,6 +461,14 @@ class _CoreScreenState extends State<CoreScreen> {
       ),
     );
   }
+
+  Widget getTopAppBar(bool isWide) {
+    return Padding(
+      padding: EdgeInsets.only(top: 12),
+      child: TopMenuBar(coreStore: store, isWide: isWide,),
+    );
+  }
+
   /*Widget getPageView() {
     return ValueListenableBuilder(
       valueListenable: store.screenIndex,
