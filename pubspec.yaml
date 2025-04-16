@@ -20,6 +20,11 @@ dependencies:
   flutter_screenutil: ^5.9.3
   url_launcher: ^6.2.5
   flutter_svg: ^2.0.17
+  rive: ^0.13.20
+  timelines_plus: ^1.0.6
+  flutter_hooks: ^0.21.2
+  expandable_page_view: ^1.0.17
+  particles_fly: ^0.0.9
 
 dev_dependencies:
   flutter_test:
@@ -34,3 +39,4 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+    - assets/anim/

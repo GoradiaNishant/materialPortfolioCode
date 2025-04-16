@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:material_portfolio/theme/text_style.dart';
 
 // Body Text - Standard
-Text titleText(
+SelectableText titleText(
   String text, {
   Color? color,
   double? fontSize,
   FontWeight? fontWeight,
 }) {
-  return Text(
+  return SelectableText(
     text,
     style: AppTextStyles.heading1.copyWith(
       fontSize: fontSize,
@@ -23,7 +23,7 @@ Text titleText(
 }
 
 // Body Text - Bold
-Text titleTextBold({String text = '', Color? color, double? fontSize}) {
+SelectableText titleTextBold({String text = '', Color? color, double? fontSize}) {
   return titleText(
     text,
     color: color,
@@ -33,8 +33,8 @@ Text titleTextBold({String text = '', Color? color, double? fontSize}) {
 }
 
 // Body Text - Italic
-Text titleTextItalic({String text = '', Color? color, double? fontSize}) {
-  return Text(
+SelectableText titleTextItalic({String text = '', Color? color, double? fontSize}) {
+  return SelectableText(
     text,
     style: AppTextStyles.heading1.copyWith(
       fontSize: fontSize,
@@ -49,7 +49,7 @@ Text titleTextItalic({String text = '', Color? color, double? fontSize}) {
 }
 
 // Body Text - Light
-Text titleTextLight({String text = '', Color? color, double? fontSize}) {
+SelectableText titleTextLight({String text = '', Color? color, double? fontSize}) {
   return titleText(
     text,
     color: color,
@@ -59,7 +59,7 @@ Text titleTextLight({String text = '', Color? color, double? fontSize}) {
 }
 
 // Body Text - Small (For captions or smaller text)
-Text titleTextSmall({String text = '', Color? color, double? fontSize}) {
+SelectableText titleTextSmall({String text = '', Color? color, double? fontSize}) {
   return titleText(
     text,
     fontSize: fontSize ?? 14.0,
@@ -67,7 +67,7 @@ Text titleTextSmall({String text = '', Color? color, double? fontSize}) {
 }
 
 // Body Text - Medium (Normal weight)
-Text titleTextMedium({String text = '', Color? color, double? fontSize}) {
+SelectableText titleTextMedium({String text = '', Color? color, double? fontSize}) {
   return titleText(
     text,
     color: color,

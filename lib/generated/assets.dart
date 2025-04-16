@@ -2,18 +2,32 @@
 class Assets {
   Assets._();
 
+  static const String animBirdButton = 'assets/anim/bird_button.riv';
+  static const String animDarkBirdButton = 'assets/anim/dark_bird_button.riv';
+  static const String animLightBirdButton = 'assets/anim/light_bird_button.riv';
+  static const String iconsIcBriefcase = 'assets/icons/ic_briefcase.svg';
+  static const String iconsIcCalender = 'assets/icons/ic_calender.svg';
+  static const String iconsIcContact = 'assets/icons/ic_contact.svg';
   static const String iconsIcDownload = 'assets/icons/ic_download.svg';
+  static const String iconsIcDropDown = 'assets/icons/ic_drop_down.svg';
   static const String iconsIcGithub = 'assets/icons/ic_github.svg';
   static const String iconsIcInsta = 'assets/icons/ic_insta.svg';
   static const String iconsIcLinkedIn = 'assets/icons/ic_linked_in.svg';
+  static const String iconsIcLocation = 'assets/icons/ic_location.svg';
+  static const String iconsIcMail = 'assets/icons/ic_mail.svg';
+  static const String iconsIcService = 'assets/icons/ic_service.svg';
   static const String iconsIcXSpace = 'assets/icons/ic_x_space.svg';
   static const String imagesAndroidSvg = 'assets/images/android_svg.svg';
   static const String imagesCompose = 'assets/images/compose.svg';
+  static const String imagesDarkContactMeProfile = 'assets/images/dark_contact_me_profile.png';
   static const String imagesDarkHeaderProfile = 'assets/images/dark_header_profile.png';
   static const String imagesDarkProfilePic = 'assets/images/dark_profile_pic.png';
   static const String imagesFlutterBird = 'assets/images/flutter_bird.svg';
+  static const String imagesGetAppStore = 'assets/images/get_app_store.png';
   static const String imagesKmm = 'assets/images/kmm.svg';
+  static const String imagesLightContactMeProfile = 'assets/images/light_contact_me_profile.png';
   static const String imagesLightHeaderProfile = 'assets/images/light_header_profile.png';
   static const String imagesLightProfilePic = 'assets/images/light_profile_pic.png';
+  static const String imagesPlaystoreBtn = 'assets/images/playstore_btn.png';
 
 }

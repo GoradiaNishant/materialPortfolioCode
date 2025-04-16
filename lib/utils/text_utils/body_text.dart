@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:material_portfolio/theme/text_style.dart';
 
 // Body Text - Standard
-Text bodyText(
-  String text, {
-  Color? color,
-  double? fontSize,
-  FontWeight? fontWeight,
-}) {
+// Body Text - Standard
+Text bodyTextRegular(
+    String text, {
+      Color? color,
+      double? fontSize,
+      FontWeight? fontWeight,
+    }) {
   return Text(
     text,
     style: AppTextStyles.bodyText.copyWith(
@@ -22,8 +23,28 @@ Text bodyText(
   );
 }
 
+SelectableText bodyText(
+  String text, {
+  Color? color,
+  double? fontSize,
+  FontWeight? fontWeight,
+}) {
+  return SelectableText(
+    text,
+    style: AppTextStyles.bodyText.copyWith(
+      fontSize: fontSize,
+      color: color,
+      fontWeight: fontWeight,
+    ),
+    textHeightBehavior: TextHeightBehavior(
+      applyHeightToFirstAscent: false,
+      applyHeightToLastDescent: false,
+    ),
+  );
+}
+
 // Body Text - Bold
-Text bodyTextBold({String text = '', Color? color, double? fontSize}) {
+SelectableText bodyTextBold({String text = '', Color? color, double? fontSize}) {
   return bodyText(
     text,
     color: color,
@@ -33,8 +54,8 @@ Text bodyTextBold({String text = '', Color? color, double? fontSize}) {
 }
 
 // Body Text - Italic
-Text bodyTextItalic({String text = '', Color? color, double? fontSize}) {
-  return Text(
+SelectableText bodyTextItalic({String text = '', Color? color, double? fontSize}) {
+  return SelectableText(
     text,
     style: AppTextStyles.bodyText.copyWith(
       fontSize: fontSize,
@@ -49,7 +70,7 @@ Text bodyTextItalic({String text = '', Color? color, double? fontSize}) {
 }
 
 // Body Text - Light
-Text bodyTextLight({String text = '', Color? color, double? fontSize}) {
+SelectableText bodyTextLight({String text = '', Color? color, double? fontSize}) {
   return bodyText(
     text,
     color: color,
@@ -59,7 +80,7 @@ Text bodyTextLight({String text = '', Color? color, double? fontSize}) {
 }
 
 // Body Text - Small (For captions or smaller text)
-Text bodyTextSmall({String text = '', Color? color, double? fontSize}) {
+SelectableText bodyTextSmall({String text = '', Color? color, double? fontSize}) {
   return bodyText(
     text,
     color: color ?? Colors.black54,
@@ -68,7 +89,7 @@ Text bodyTextSmall({String text = '', Color? color, double? fontSize}) {
 }
 
 // Body Text - Medium (Normal weight)
-Text bodyTextMedium({String text = '', Color? color, double? fontSize}) {
+SelectableText bodyTextMedium({String text = '', Color? color, double? fontSize}) {
   return bodyText(
     text,
     color: color,
