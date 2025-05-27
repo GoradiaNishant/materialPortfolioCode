@@ -115,8 +115,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
 
   Widget serviceCard(String title, String description, bool isWide) {
     return Container(
-      width: isWide ? 260 : MediaQuery.of(context).size.width,
-      height: isWide ? 260 : null,
+      width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: colorScheme.primaryContainer,
@@ -227,25 +226,16 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
   }
 
   Widget aboutMeWidget(bool isWide) {
-    return isWide ? Row(
-      children: [
-        Expanded(
-          child: titleText(
-            "About Me",
-            color: Colors.white,
-            fontSize: 52,
-          ),
-        ),
-        _buildDownloadButtonAnim(),
-      ],
-    ) : Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        titleText(
-          "About Me",
-          color: Colors.white,
-          fontSize: 32,
+        Center(
+          child: titleTextMedium(
+            text : "About Me",
+            color: Colors.white,
+            fontSize: 48,
+          ),
         ),
         _buildDownloadButtonAnim(),
       ],
@@ -274,30 +264,33 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
     return [
       bodyText("What I'm Doing", color: Colors.white, fontSize: 24),
       SizedBox(height: 16.h),
-      Wrap(
-        spacing: 16,
-        runSpacing: 16,
-        crossAxisAlignment: WrapCrossAlignment.start,
-        alignment: WrapAlignment.center,
-        children: [
-          isWide ? SizedBox(width: 16) : SizedBox(width: 0),
-          serviceCard(
-            "UI/UX design",
-            "The most modern and high quality ui design with best user experience",
-            isWide,
-          ),
-          serviceCard(
-            "Mobile Apps",
-            "Professional Android/iOS apps using native and cross platform technologies",
-            isWide,
-          ),
-          serviceCard(
-            "Backend Services",
-            "High-quality backend support with Node.js and SpringBoot(kotlin).",
-            isWide,
-          ),
-        ],
+      IntrinsicWidth(
+        child: Wrap(
+          spacing: 1,
+          runSpacing: 16,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.spaceEvenly,
+          runAlignment: WrapAlignment.spaceEvenly,
+          children: [
+            serviceCard(
+              "UI/UX design",
+              "The most modern and high quality ui design with best user experience",
+              isWide,
+            ),
+            serviceCard(
+              "Mobile Apps",
+              "Professional Android/iOS apps using native and cross platform technologies",
+              isWide,
+            ),
+            serviceCard(
+              "Backend Services",
+              "High-quality backend support with Node.js and SpringBoot(kotlin).",
+              isWide,
+            ),
+          ],
+        ),
       ),
+      const SizedBox(height: 24),
     ];
   }
 }
