@@ -171,146 +171,165 @@ class _CoreScreenState extends State<CoreScreen> {
         child: StreamBuilder<bool>(
           stream: _bloc.isCollapsed,
           builder: (context, snapshot) {
-            isCollapsed = snapshot.data ?? false;
-            return isCollapsed
-                ? Row(
-                  children: [
-                    Image.asset(
-                      height: 100,
-                      width: 100,
-                      getProfilePicId(),
-                      fit: BoxFit.fitHeight,
-                    ),
-                    SizedBox(width: 8),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: bodyText(
-                              "Er. Nishant Goradiya",
-                              color: colorScheme.onPrimaryContainer,
-                              fontSize: 24,
-                            ),
-                          ),
-                          SizedBox(height: 4.h),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: bodyText(
-                              "Software Engineer",
-                              color: colorScheme.onPrimaryContainer,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        _bloc.changeIsCollapsed(!isCollapsed);
-                      },
-                      child: SvgPicture.asset(
-                        height: 20,
-                        width: 20,
-                        Assets.iconsIcDropDown,
-                        fit: BoxFit.fitHeight,
-                        colorFilter: ColorFilter.mode(
-                          colorScheme.onPrimaryContainer,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-                : SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      isWide
-                          ? SizedBox()
-                          : InkWell(
-                            onTap: () {
-                              _bloc.changeIsCollapsed(!isCollapsed);
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 8.0),
-                              child: Transform(
-                                transform: Matrix4.rotationX(3.1415926535), // π radians = 180°
-                                child: SvgPicture.asset(
-                                  height: 20,
-                                  width: 20,
-                                  Assets.iconsIcDropDown,
-                                  fit: BoxFit.fitHeight,
-                                  colorFilter: ColorFilter.mode(
-                                    colorScheme.onPrimaryContainer,
-                                    BlendMode.srcIn,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+            bool isCollapsed = snapshot.data ?? false;
 
-                      SizedBox(height: 16.h),
-                      if (!isCollapsed) ...[
-                        Image.asset(
-                          height: 200,
-                          width: 200,
-                          getProfilePicId(),
-                          fit: BoxFit.fitHeight,
-                        ),
-                        SizedBox(height: 16.h),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: bodyText(
-                            "Er. Nishant Goradiya",
-                            color: colorScheme.onPrimaryContainer,
-                            fontSize: 24,
-                          ),
-                        ),
-                        SizedBox(height: 4.h),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: bodyText(
-                            "Software Engineer",
-                            color: colorScheme.onPrimaryContainer,
-                            fontSize: 18,
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        infoItems(
-                          Assets.iconsIcMail,
-                          "Email",
-                          "goradianishant2000@gmail.com",
-                        ),
-                        infoItems(
-                          Assets.iconsIcContact,
-                          "Phone",
-                          "+91 8320901498",
-                        ),
-                        infoItems(
-                          Assets.iconsIcCalender,
-                          "DOB",
-                          "August 10, 2000",
-                        ),
-                        infoItems(
-                          Assets.iconsIcLocation,
-                          "Location",
-                          "Ahmedabad, GJ, India",
-                        ),
-                        SizedBox(height: 16),
-                        _buildFollowMeBar(),
-                      ],
-                    ],
-                  ),
-                );
+            return AnimatedCrossFade(
+              firstChild: _buildCollapsedSidebar(isCollapsed),
+              secondChild: _buildExpandedSidebar(isCollapsed, isWide),
+              crossFadeState:
+              isCollapsed ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+              duration: Duration(milliseconds: 300),
+              firstCurve: Curves.easeInOut,
+              secondCurve: Curves.easeInOut,
+              sizeCurve: Curves.easeInOut,
+            );
           },
         ),
       ),
     );
   }
+
+  Widget _buildCollapsedSidebar(bool isCollapsed) {
+    return Row(
+      children: [
+        Hero(
+          tag: "contact_me",
+          child: Image.asset(
+            height: 100,
+            width: 100,
+            getProfilePicId(),
+            fit: BoxFit.fitHeight,
+          ),
+        ),
+        SizedBox(width: 8),
+        Expanded(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: bodyText(
+                  "Er. Nishant Goradiya",
+                  color: colorScheme.onPrimaryContainer,
+                  fontSize: 24,
+                ),
+              ),
+              SizedBox(height: 4.h),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: bodyText(
+                  "Software Engineer",
+                  color: colorScheme.onPrimaryContainer,
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            _bloc.changeIsCollapsed(!isCollapsed);
+          },
+          child: SvgPicture.asset(
+            height: 20,
+            width: 20,
+            Assets.iconsIcDropDown,
+            fit: BoxFit.fitHeight,
+            colorFilter: ColorFilter.mode(
+              colorScheme.onPrimaryContainer,
+              BlendMode.srcIn,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildExpandedSidebar(bool isCollapsed, bool isWide) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (!isWide)
+            InkWell(
+              onTap: () {
+                _bloc.changeIsCollapsed(!isCollapsed);
+              },
+              child: Padding(
+                padding: EdgeInsets.only(top: 18.0),
+                child: Transform(
+                  transform: Matrix4.rotationX(3.1415926535), // π radians = 180°
+                  child: SvgPicture.asset(
+                    height: 20,
+                    width: 20,
+                    Assets.iconsIcDropDown,
+                    fit: BoxFit.fitHeight,
+                    colorFilter: ColorFilter.mode(
+                      colorScheme.onPrimaryContainer,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          SizedBox(height: 16.h),
+          Hero(
+            tag: "contact_me",
+            child: Image.asset(
+              height: 100,
+              width: 100,
+              getProfilePicId(),
+              fit: BoxFit.fitHeight,
+            ),
+          ),
+          SizedBox(height: 16.h),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: bodyText(
+              "Er. Nishant Goradiya",
+              color: colorScheme.onPrimaryContainer,
+              fontSize: 24,
+            ),
+          ),
+          SizedBox(height: 4.h),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: bodyText(
+              "Software Engineer",
+              color: colorScheme.onPrimaryContainer,
+              fontSize: 18,
+            ),
+          ),
+          SizedBox(height: 16),
+          infoItems(
+            Assets.iconsIcMail,
+            "Email",
+            "goradianishant2000@gmail.com",
+          ),
+          infoItems(
+            Assets.iconsIcContact,
+            "Phone",
+            "+91 8320901498",
+          ),
+          infoItems(
+            Assets.iconsIcCalender,
+            "DOB",
+            "August 10, 2000",
+          ),
+          infoItems(
+            Assets.iconsIcLocation,
+            "Location",
+            "Ahmedabad, GJ, India",
+          ),
+          SizedBox(height: 16),
+          _buildFollowMeBar(),
+        ],
+      ),
+    );
+  }
+
 
   String getProfilePicId() {
     return isDark

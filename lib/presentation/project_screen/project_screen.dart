@@ -55,8 +55,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
     return Padding(
       padding: EdgeInsets.only(
         top: 34.w,
-        right: 32.w,
-        left: 32.w,
+        right: 32,
+        left: 32,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
