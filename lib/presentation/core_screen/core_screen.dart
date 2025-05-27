@@ -14,6 +14,7 @@ import '../../generated/assets.dart';
 import '../../utils/text_utils/body_text.dart';
 import '../components/top_menu_bar.dart';
 import '../project_screen/project_screen.dart';
+import 'dart:html' as html;
 
 class CoreScreen extends StatefulWidget {
   const CoreScreen({super.key});
@@ -36,6 +37,7 @@ class _CoreScreenState extends State<CoreScreen> {
   @override
   void initState() {
     super.initState();
+    html.document.title = "Nishant's Portfolio";
     _themeCubit = context.read<ThemeCubit>();
     isDark = _themeCubit.state == ThemeMode.dark;
     _bloc = CoreScreenBloc();

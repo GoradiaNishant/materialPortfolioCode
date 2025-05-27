@@ -11,6 +11,7 @@ import 'package:material_portfolio/utils/text_utils/body_text.dart';
 import 'package:material_portfolio/utils/text_utils/title_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:html' as html;
 
 class HomeScreen extends StatefulWidget {
   final CoreStore coreStore;
@@ -22,6 +23,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    html.document.title = "Nishant's Portfolio";
+  }
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
